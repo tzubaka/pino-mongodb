@@ -26,7 +26,7 @@ function handleConnection (e, mClient) {
     throw e
   }
 
-  const dbName = parseMongoUrl(mongoUrl).db
+  const dbName = parseMongoUrl(mongoUrl.replace('+srv', '')).db
 
   const db = mClient.db(dbName)
   const emitter = carrier.carry(process.stdin)
